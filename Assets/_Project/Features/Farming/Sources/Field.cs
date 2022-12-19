@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Field : PlaceableObject
 {
-    private Dictionary<Crop, int> allCrops;
+    //private Dictionary<Crop, int> allCrops;
     private static int amount = 2; // default amonut of crops produced
 
     private SpriteRenderer sr;
@@ -15,9 +15,9 @@ public class Field : PlaceableObject
         emptyFieldSprite = sr.sprite;
     }
 
-    private static void Initialize(Dictionary<Crop, int> crops) {
-        allCrops = crops;
-    }
+    //private static void Initialize(Dictionary<Crop, int> crops) {
+    //    allCrops = crops;
+    //}
 
     protected override void OnClick() {
         Debug.Log("Clicked on the field");

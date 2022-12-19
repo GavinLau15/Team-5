@@ -17,7 +17,7 @@ public class PlaceableObject : MonoBehaviour
         return BuildingSystem.current.CanTakeArea(areaTemp);
     }
 
-    publicvoid Place() {
+    public void Place() {
         Vector3Int positionInt = BuildingSystem.current.gridLayout.LocalToCell(transform.position);
         BoundsInt areaTemp = area;
         areaTemp.position = positionInt;
