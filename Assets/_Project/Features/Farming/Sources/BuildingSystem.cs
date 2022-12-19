@@ -6,6 +6,7 @@ using UnityEngine.Tilemaps;
 
 public class BuildingSystem : MonoBehaviour
 {
+    [SerializeField] private TileDatabase database;
     public static BuildingSystem current;
 
     public GridLayout gridLayout;
@@ -13,6 +14,14 @@ public class BuildingSystem : MonoBehaviour
     public TileBase takenTile;
 
     #region Tilemap Management
+
+
+    public void PlaceTile(int id, Vector3Int position) 
+    {
+        id = 0; //delete later
+        position = Vector3Int.zero; //delete later
+        MainTilemap.SetTile(position , database.tiles[id]);
+    }   
 
     private static TileBase[] GetTilesBlock(BoundsInt area, Tilemap tilemap)
     {

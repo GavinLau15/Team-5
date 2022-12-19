@@ -2655,6 +2655,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 313031549724772033, guid: 3f7c1c3ab2d2c9e4a8d5e605cda994f6, type: 3}
+      propertyPath: m_SortOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4123078804665964754, guid: 3f7c1c3ab2d2c9e4a8d5e605cda994f6, type: 3}
+      propertyPath: m_CellLayout
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7438853180823104344, guid: 3f7c1c3ab2d2c9e4a8d5e605cda994f6, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7438853180823104344, guid: 3f7c1c3ab2d2c9e4a8d5e605cda994f6, type: 3}
+      propertyPath: m_TileAnchor.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7438853180823104344, guid: 3f7c1c3ab2d2c9e4a8d5e605cda994f6, type: 3}
+      propertyPath: m_TileAnchor.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8480627052464851909, guid: 3f7c1c3ab2d2c9e4a8d5e605cda994f6, type: 3}
       propertyPath: m_Name
       value: Environment
