@@ -4,6 +4,7 @@ using UnityEditor.UI;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
+//WIP
 public class TestItem : Item
 {   
 

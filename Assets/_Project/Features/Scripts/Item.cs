@@ -1,14 +1,16 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-abstract public class Item 
+[Serializable]
+public class Item 
 {
     public int id;
     public string name;
     public string description;
-    public Tile tileRepresentation;
+    public TileBase tileRepresentation;
 
-    abstract public void Use();
+    public virtual void Use() { }
 }

@@ -6,12 +6,11 @@ using UnityEngine.Tilemaps;
 
 
 
-public class BuildingSystem : MonoBehaviour
+public class BuildingSystem : MonoSingletonPersistent<BuildingSystem>
 {
     public enum Map { Static, Interactable, Ground, Water};
 
     [SerializeField] private TileDatabase database;
-    public static BuildingSystem Instance;
 
     public GridLayout gridLayout;
     [SerializeField] private Tilemap groundMap;
@@ -21,13 +20,6 @@ public class BuildingSystem : MonoBehaviour
     public TileBase takenTile;
 
 
-    private void Awake()
-    {
-        if (Instance == null) 
-        {
-            Instance = this;
-        }
-    }
 
     #region Tilemap Management
 

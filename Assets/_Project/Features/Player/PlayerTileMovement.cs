@@ -17,7 +17,7 @@ public class PlayerTileMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         Move();
     }
@@ -82,7 +82,7 @@ public class PlayerTileMovement : MonoBehaviour
         while((newPos - rb.position).sqrMagnitude > Mathf.Epsilon)
         {
             //current position move toward new position 
-            rb.position = Vector2.MoveTowards(rb.position, newPos, speed * Time.fixedDeltaTime);
+            rb.position = Vector2.MoveTowards(rb.position, newPos, speed * Time.deltaTime);
             yield return null;
         }
 
