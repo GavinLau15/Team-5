@@ -4,24 +4,64 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 
+
+
 public class BuildingSystem : MonoBehaviour
 {
+    public enum Map { Static, Interactable, Ground, Water};
+
     [SerializeField] private TileDatabase database;
-    public static BuildingSystem current;
+    public static BuildingSystem Instance;
 
     public GridLayout gridLayout;
-    public Tilemap MainTilemap;
+    [SerializeField] private Tilemap groundMap;
+    [SerializeField] private Tilemap staticMap;
+    [SerializeField] private Tilemap interactableMap;
+    [SerializeField] private Tilemap waterMap;
     public TileBase takenTile;
+
+
+    private void Awake()
+    {
+        if (Instance == null) 
+        {
+            Instance = this;
+        }
+    }
 
     #region Tilemap Management
 
-
-    public void PlaceTile(int id, Vector3Int position) 
+    private Tilemap GetTileMap(Map map) 
     {
-        id = 0; //delete later
-        position = Vector3Int.zero; //delete later
-        MainTilemap.SetTile(position , database.tiles[id]);
-    }   
+        switch (map)
+        {
+            case Map.Static:
+                return staticMap;
+            case Map.Interactable:
+                return interactableMap;
+            case Map.Ground:
+                return groundMap;
+            case Map.Water:
+                return waterMap;
+
+            default: return null;
+        }
+    }
+
+    public TileBase GetTile(Vector3Int position, Map map)
+    {
+        return GetTileMap(map).GetTile(position);
+    }
+
+
+    public void SetTile(int id, Vector3Int position, Map map) 
+    {
+        GetTileMap(map).SetTile(position, null);
+    }
+    public void SetTile(TileBase tile, Vector3Int position, Map map)
+    {
+        GetTileMap(map).SetTile(position, tile);
+    }
 
     private static TileBase[] GetTilesBlock(BoundsInt area, Tilemap tilemap)
     {
@@ -74,9 +114,9 @@ public class BuildingSystem : MonoBehaviour
         //temp.gameObject.AddComponent<ObjectDrag>();
     }
 
-    public bool CanTakeArea(BoundsInt area)
+    public bool CanTakeArea(BoundsInt area, Map map)
     {
-        TileBase[] baseArray = GetTilesBlock(area, MainTilemap);
+        TileBase[] baseArray = GetTilesBlock(area, GetTileMap(map));
 
         foreach (var b in baseArray)
         {
@@ -89,9 +129,9 @@ public class BuildingSystem : MonoBehaviour
         return true;
     }
 
-    public void TakeArea(BoundsInt area)
+    public void TakeArea(BoundsInt area, Map map)
     {
-        SetTilesBlock(area, takenTile, MainTilemap);
+        SetTilesBlock(area, takenTile, GetTileMap(map));
     }
 
     #endregion

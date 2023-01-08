@@ -6,26 +6,26 @@ public class PlaceableObject : MonoBehaviour
 {
     public bool Placed { get; private set; }
     private Vector3 origin;
-
+    
     public BoundsInt area;
 
     public bool CanBePlaced() {
-        Vector3Int positionInt = BuildingSystem.current.gridLayout.LocalToCell(transform.position);
+        Vector3Int positionInt = BuildingSystem.Instance.gridLayout.LocalToCell(transform.position);
         BoundsInt areaTemp = area;
         areaTemp.position = positionInt;
 
-        return BuildingSystem.current.CanTakeArea(areaTemp);
+        return BuildingSystem.Instance.CanTakeArea(areaTemp, BuildingSystem.Map.Static);
     }
 
     public void Place() {
-        Vector3Int positionInt = BuildingSystem.current.gridLayout.LocalToCell(transform.position);
+        Vector3Int positionInt = BuildingSystem.Instance.gridLayout.LocalToCell(transform.position);
         BoundsInt areaTemp = area;
         areaTemp.position = positionInt;
 
         Placed = true;
         origin = transform.position;
 
-        BuildingSystem.current.TakeArea(areaTemp);
+        BuildingSystem.Instance.TakeArea(areaTemp, BuildingSystem.Map.Static);
     }
 
     public void CheckPlacement() {

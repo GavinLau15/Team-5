@@ -67,7 +67,7 @@ public class PlayerTileMovement : MonoBehaviour
         
         //if the overlap circle detects tile in whatStopsMovement layer, it prevents the movement.
 
-        if (!Physics2D.OverlapCircle(moveToPosition, .2f, whatStopsMovement)) {
+        if (!Physics2D.OverlapPoint(moveToPosition, whatStopsMovement)) {
             StartCoroutine(MoveHelper(moveToPosition));
         }
         
