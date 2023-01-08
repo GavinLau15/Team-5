@@ -10,6 +10,8 @@ public class PlayerTileMovement : MonoBehaviour
 
     private bool isMoving = false;
 
+    public LayerMask whatStopsMovement;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -49,33 +51,42 @@ public class PlayerTileMovement : MonoBehaviour
 
     private void Move()
     {
+        // if player is moving already
         if (isMoving == true)
         {
             return;
         }
 
+        // if direction is zero
         if (GetDirection() == Vector2.zero)
         {
             return;
         }
 
         Vector2 moveToPosition = rb.position + GetDirection();
-        StartCoroutine(MoveHelper(moveToPosition));
+        
+        //if the overlap circle detects tile in whatStopsMovement layer, it prevents the movement.
 
+        if (!Physics2D.OverlapCircle(moveToPosition, .2f, whatStopsMovement)) {
+            StartCoroutine(MoveHelper(moveToPosition));
+        }
+        
     }
 
-
+    // to acheive moving one tile at a time
     IEnumerator MoveHelper(Vector2 newPos)
     {
         isMoving = true;
 
+        // while distance between new position and current position is not zero
         while((newPos - rb.position).sqrMagnitude > Mathf.Epsilon)
         {
+            //current position move toward new position 
             rb.position = Vector2.MoveTowards(rb.position, newPos, speed * Time.fixedDeltaTime);
             yield return null;
         }
 
-        rb.position = newPos;
+        //rb.position = newPos;
 
         isMoving = false;
 
