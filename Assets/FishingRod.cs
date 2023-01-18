@@ -16,9 +16,8 @@ public class FishingRod : MonoBehaviour
 
     }
 
-    void Fish()
+    Fish GoFishing()
     {
-        int rng = Random.Range(0, 101);
         //TODO: Figure out how to get a list of all fishes. This is assuming we already have a list of Fish items.
         List<Fish> fishDropRates = new List<Fish>();
         int total = 0;
@@ -41,10 +40,6 @@ public class FishingRod : MonoBehaviour
                 rng -= fish.dropChance;
             }
         }
+        return null;
     }
 }
-
-// public class FishRarityTable
-// {
-
-// }

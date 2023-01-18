@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class LootItem : ScriptableObject
 {
-    public string itemId = displayName + rarity.ToString();
+    public string itemId { get; set; }
     public string displayName { get; set; }
     public ItemType type { get; set; }
     public int dropChance { get; set; } // a prob distribution, not exact percentages, higher means more likely to drop compared to other items
