@@ -3,20 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class FishingRod : MonoBehaviour
+public class FishingRod : Item
 {
-    // Runs when we start our game
-    public void Start()
-    {
-
+    public override void Use() {
+        GoFishing();
     }
 
-    void OnValidate()
-    {
-
-    }
-
-    Fish GoFishing()
+    public Fish GoFishing()
     {
         //TODO: Figure out how to get a list of all fishes. This is assuming we already have a list of Fish items.
         List<Fish> fishDropRates = new List<Fish>();
