@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[Serializable]
+[CreateAssetMenu(menuName = "Items/Fish")]
 public class Fish : Item
 {
     public int dropChance;

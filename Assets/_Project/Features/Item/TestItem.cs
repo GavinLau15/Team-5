@@ -4,7 +4,7 @@ using UnityEditor.UI;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-[CreateAssetMenu]
+[CreateAssetMenu(menuName = "Items/TestItem")]
 public class TestItem : Item
 {   
 
