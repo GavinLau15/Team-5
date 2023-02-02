@@ -5,22 +5,21 @@ using UnityEngine.UI;
 
 public class FishingUIController : MonoBehaviour
 {
+    public RectTransform fishingPromptBG;
     public RectTransform fish;
     public RectTransform bar;
     public Image progressBar;
 
-    public float barMoveSpeed = 10f;
+    public float barMoveSpeed = 3f;
     public float barGravity = 1f;
-    public float fishVelocity = 10f;
-    public float overlappedTime = 1f;  
+    public float fishVelocity = 1f;
+    public float overlappedTime = 3f; 
 
     private float barVelocity;
     private float barPosition;
     private float fishPosition;
 
     private const float SMALL_FACTOR = 8f;
-    private const float MIN_POS = -91f;
-    private const float MAX_POS = 91f;
 
     private const float MAX_VEL = 6f;
     private const float MIN_VEL = -2f;
@@ -28,12 +27,14 @@ public class FishingUIController : MonoBehaviour
     public const float MAX_OVERLAPPED_TIME = 5f;
     public const float START_OVERLAPPED_TIME = 2f;
 
+    private float MinPos => fishingPromptBG.anchoredPosition.y + fishingPromptBG.sizeDelta.y / 4;
+    private float MaxPos => fishingPromptBG.anchoredPosition.y - fishingPromptBG.sizeDelta.y / 4;
     private float HalfFishH => fish.sizeDelta.y / 2f;
     private float HalfBarH => bar.sizeDelta.y / 2f;
 
     void Start()
     {        
-        fishPosition = Random.Range(MIN_POS, MAX_POS);
+        fishPosition = Random.Range(MinPos, MaxPos);
         barPosition = fishPosition;
     }
 
@@ -62,15 +63,15 @@ public class FishingUIController : MonoBehaviour
             barVelocity += Time.deltaTime * barMoveSpeed;
         }
 
-        if (fishPosition <= MIN_POS + HalfFishH + 1)
+        if (fishPosition <= MinPos + HalfFishH - 1f)
         {
             // this teleportation ensure that the fish will bounce off
-            fishPosition = MIN_POS + HalfFishH + 2 + fishVelocity;
+            fishPosition = MinPos + HalfFishH + fishVelocity + 1f;
             fishVelocity = -fishVelocity;
         }
-        if (fishPosition >= MAX_POS - HalfFishH + 1)
+        if (fishPosition >= MaxPos - HalfFishH + 1f)
         {
-            fishPosition = MAX_POS - HalfFishH - 2 - fishVelocity;
+            fishPosition = MaxPos - HalfFishH - fishVelocity - 1f;
             fishVelocity = -fishVelocity;
         }
 
@@ -79,11 +80,11 @@ public class FishingUIController : MonoBehaviour
         barVelocity -= Time.deltaTime * barGravity;
         barVelocity =  Mathf.Clamp(barVelocity, MIN_VEL, MAX_VEL);
         barPosition += barVelocity;
-        barPosition = Mathf.Clamp(barPosition, MIN_POS + HalfBarH,
-            MAX_POS - HalfBarH);
+        barPosition = Mathf.Clamp(barPosition, MinPos + HalfBarH,
+            MaxPos - HalfBarH);
 
-        if (barPosition >= MAX_POS - HalfBarH ||
-            barPosition <= MIN_POS + HalfBarH)
+        if (barPosition >= MaxPos - HalfBarH ||
+            barPosition <= MinPos + HalfBarH)
         {
             barVelocity = 0f;
         }

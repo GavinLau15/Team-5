@@ -10,7 +10,6 @@ public class FishingController : MonoBehaviour
     public Tilemap waterTiles;
     public GameObject fishingPrompt;
     public GameObject fishingMiniGameUI;
-    public GameObject fishingProgressBar;
 
     private bool isFishingUIOpen = false;
     private bool isFishingSucceeded = false;
@@ -48,7 +47,7 @@ public class FishingController : MonoBehaviour
                 isFishingSucceeded = true;
                 print("You got a fish");
             }
-            else if (FindObjectOfType<FishingUIController>().overlappedTime <= 0) 
+            else if (FindObjectOfType<FishingUIController>().overlappedTime <= 0)
             {
                 FindObjectOfType<FishingUIController>().overlappedTime = FishingUIController.START_OVERLAPPED_TIME;
                 fishingMiniGameUI.SetActive(false);
@@ -64,13 +63,14 @@ public class FishingController : MonoBehaviour
 
     private void TryTriggerFishingPrompt(int playerX, int playerY)
     {
+        Vector3Int playerPosInCellPos = waterTiles.WorldToCell(new Vector2(playerX, playerY));
+        playerX = playerPosInCellPos.x;
+        playerY = playerPosInCellPos.y;
         for (int y = playerY - detectionSquare; y <= playerY + detectionSquare; y++)
         {
             for (int x = playerX - detectionSquare; x <= playerX + detectionSquare; x++)
             {
-                Vector2 worldPosOfTile = new Vector2(x, y);
-                Vector3Int tilePos = waterTiles.WorldToCell(worldPosOfTile);
-                TileBase tile = waterTiles.GetTile(tilePos);
+                TileBase tile = waterTiles.GetTile(new Vector3Int(x, y, 0));
                 if (tile != null && tile.name == "tile_water")
                 {
                     fishingPrompt.SetActive(true);
