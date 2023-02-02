@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 735423363342582884}
   - component: {fileID: 7105355922668990397}
   - component: {fileID: 2251172250182923196}
+  - component: {fileID: 1427954265538697850}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -136,3 +137,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &1427954265538697850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 886449311723805464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 333272c91483bc04a801a662f9634ee7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectionSquare: 2
+  waterTiles: {fileID: 0}
+  fishingPrompt: {fileID: 0}
+  fishingMiniGameUI: {fileID: 0}
+  fishingProgressBar: {fileID: 0}
