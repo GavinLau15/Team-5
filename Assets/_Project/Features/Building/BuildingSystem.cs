@@ -17,6 +17,7 @@ public class BuildingSystem : MonoSingletonPersistent<BuildingSystem>
     [SerializeField] private Tilemap staticMap;
     [SerializeField] private Tilemap interactableMap;
     [SerializeField] private Tilemap waterMap;
+    [SerializeField] private TileBase baseTileForGround;
     public TileBase takenTile;
 
 
@@ -52,6 +53,11 @@ public class BuildingSystem : MonoSingletonPersistent<BuildingSystem>
     public void SetTile(TileBase tile, Vector3Int position, Map map)
     {
         GetTileMap(map).SetTile(position, tile);
+    }
+
+    public void RemoveTile(Vector3Int position, Map map)
+    {
+        GetTileMap(map).SetTile(position, null);
     }
 
     #endregion

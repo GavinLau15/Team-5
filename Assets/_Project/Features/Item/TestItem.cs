@@ -21,7 +21,7 @@ public class TestItem : Item
 
         GameObject player = GameObject.FindWithTag("Player");
         //BuildingSystem.Instance.SetTile(0, Vector3Int.RoundToInt(player.transform.position), BuildingSystem.Map.Ground);
-        BuildingSystem.Instance.SetTile(tileRepresentation, Vector3Int.RoundToInt(player.transform.position + new Vector3(-0.5f,-0.5f,0f)), BuildingSystem.Map.Static);
+        BuildingSystem.Instance.SetTile(tileRepresentation, Vector3Int.RoundToInt(player.transform.position + new Vector3(-0.5f,0.5f,0f)), BuildingSystem.Map.Static);
 
         //TileBase targetTile = BuildingSystem.Instance.GetTile(Vector3Int.RoundToInt(player.transform.position), BuildingSystem.Map.Ground);
 
