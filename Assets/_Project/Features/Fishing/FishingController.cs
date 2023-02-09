@@ -58,6 +58,7 @@ public class FishingController : MonoBehaviour
         if (isFishingSucceeded)
         {
             AwardFish();
+            isFishingSucceeded = false;
         }
     }
 
@@ -71,6 +72,7 @@ public class FishingController : MonoBehaviour
             for (int x = playerX - detectionSquare; x <= playerX + detectionSquare; x++)
             {
                 TileBase tile = waterTiles.GetTile(new Vector3Int(x, y, 0));
+                //TODO: Add a condition to check if fishing rod is equiped(?)
                 if (tile != null && tile.name == "tile_water")
                 {
                     fishingPrompt.SetActive(true);
@@ -86,6 +88,35 @@ public class FishingController : MonoBehaviour
 
     private void AwardFish()
     {
+        //TODO: this should call GetFish() to determine what fish to get, then add the fish by calling the inventory system -michael
+        Fish fishCaptured = GetFish();
+        print(fishCaptured.name);
+        // add to inventory here
+    }
 
+    private Fish GetFish()
+    {
+        List<Fish> fishDropRates = ItemSystem.Instance.GetFishList();
+        int total = 0;
+
+        foreach (Fish fish in fishDropRates)
+        {
+            total += fish.dropChance;
+        }
+
+        int rng = Random.Range(0, total);
+
+        foreach (Fish fish in fishDropRates)
+        {
+            if (rng <= fish.dropChance)
+            {
+                return fish;
+            }
+            else
+            {
+                rng -= fish.dropChance;
+            }
+        }
+        return null;
     }
 }
