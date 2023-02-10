@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class Item : ScriptableObject
+public abstract class Item : ScriptableObject
 {
     public int id;
     public new string name;
@@ -12,4 +12,9 @@ public class Item : ScriptableObject
     public TileBase tileRepresentation;
 
     public virtual void Use() { }
+
+    public abstract Item getItem();
+    public abstract FishingRod getFishingRod();
+    public abstract Fish getFish();
+    public abstract Furniture getFurniture();
 }
