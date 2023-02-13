@@ -45,6 +45,7 @@ public class FishingController : MonoBehaviour
                 FindObjectOfType<FishingUIController>().overlappedTime = FishingUIController.START_OVERLAPPED_TIME;
                 fishingMiniGameUI.SetActive(false);
                 isFishingSucceeded = true;
+                // FindObjectOfType<GoldController>().AddGold(2); test
                 print("You got a fish");
             }
             else if (FindObjectOfType<FishingUIController>().overlappedTime <= 0)
