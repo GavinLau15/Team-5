@@ -10,6 +10,7 @@ public abstract class Item : ScriptableObject
     public new string name;
     public string description;
     public TileBase tileRepresentation;
+    public Sprite itemIcon;
 
     public virtual void Use() { }
 
