@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7105355922668990397}
   - component: {fileID: 2251172250182923196}
   - component: {fileID: 1427954265538697850}
+  - component: {fileID: 3471207506821972990}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -100,6 +101,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58869fba1743d2d4fbe599d2054a8abe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  teleportPlayer:
+    serializedVersion: 2
+    m_Bits: 128
+  playerTileMovement: {fileID: 7105355922668990397}
 --- !u!114 &7105355922668990397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,3 +158,16 @@ MonoBehaviour:
   waterTiles: {fileID: 0}
   fishingPrompt: {fileID: 0}
   fishingMiniGameUI: {fileID: 0}
+--- !u!114 &3471207506821972990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 886449311723805464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5125878214735414bb53a6a137c4590a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goldText: {fileID: 0}
