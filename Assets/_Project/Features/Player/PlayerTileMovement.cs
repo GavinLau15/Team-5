@@ -1,16 +1,21 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.TextCore.Text;
 using UnityEngine;
+using UnityEngine.UIElements;
+using static System.TimeZoneInfo;
 
 public class PlayerTileMovement : MonoBehaviour
 {
     [SerializeField] private float speed = 10;
 
     private Rigidbody2D rb;
-
+    private Coroutine moveCoroutine;
     private bool isMoving = false;
 
     public LayerMask whatStopsMovement;
+    
 
     private void Awake()
     {
@@ -64,14 +69,31 @@ public class PlayerTileMovement : MonoBehaviour
         }
 
         Vector2 moveToPosition = rb.position + GetDirection();
-        
-        //if the overlap circle detects tile in whatStopsMovement layer, it prevents the movement.
 
-        if (!Physics2D.OverlapPoint(moveToPosition, whatStopsMovement)) {
-            StartCoroutine(MoveHelper(moveToPosition));
+        if (!Physics2D.OverlapPoint(moveToPosition, whatStopsMovement))
+        {
+
+            StopMovement();
+
+            //if the overlap circle detects tile in whatStopsMovement layer, it prevents the movement.
+            moveCoroutine = StartCoroutine(MoveHelper(moveToPosition));
+
         }
-        
+
     }
+
+    public void StopMovement()
+    {
+
+        if (moveCoroutine != null) 
+        {
+            StopCoroutine(moveCoroutine);
+            
+        }
+
+        isMoving = false;
+    }
+    
 
     // to acheive moving one tile at a time
     IEnumerator MoveHelper(Vector2 newPos)
@@ -90,6 +112,12 @@ public class PlayerTileMovement : MonoBehaviour
 
         isMoving = false;
 
-
     }
+
+    public void Teleport(Vector2 position)
+    {
+        StopMovement();
+        TransitionManager.Instance.StartTransition(() => rb.position = position);
+    }
+
 }
