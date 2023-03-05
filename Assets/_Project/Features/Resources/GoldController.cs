@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class GoldController : MonoBehaviour
+public class GoldController : MonoSingletonPersistent<GoldController>
 {
     private int gold;
     public TextMeshProUGUI goldText;
