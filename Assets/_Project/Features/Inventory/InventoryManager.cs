@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class InventoryManager : MonoBehaviour
-{
-  [SerializeField] private GameObject mainInventory;
+// Manages the overall inventory 
+public class InventoryManager : MonoBehaviour {
+	[SerializeField] private GameObject mainInventory;
 	[SerializeField] private Item itemToAdd;
 	[SerializeField] private Item itemToRemove;
 	public List<Slot> inventory = new List<Slot>();
@@ -19,7 +19,7 @@ public class InventoryManager : MonoBehaviour
 	public void Start() {
       slots = new GameObject[mainInventory.transform.childCount];
    	
-      // set all slots
+      // sets all slots
       for (int i = 0; i < mainInventory.transform.childCount; i++) {
         slots[i] = mainInventory.transform.GetChild(i).gameObject;
       }
@@ -30,6 +30,7 @@ public class InventoryManager : MonoBehaviour
       Remove(itemToRemove);
    }
 
+   // refreshes UI inventory
    public void RefreshUI() {
     for (int i = 0; i < slots.Length; i++) {
       try {
@@ -49,10 +50,11 @@ public class InventoryManager : MonoBehaviour
     }
   }
 
+  // if the inventory is not full:
+  //      - checks if the inventory already contains the item and if the item is stackable
+  //      - if item isn't stackable or isn't in inventory, adds it to a new slot
+  // else, does not add item to inventory
    public bool Add(Item item) {
-    // check if the inventory already contains item
-
-
     Slot slot = Contains(item);
     if (slot != null && slot.GetItem().isStackable) {
       slot.AddQuantity(1);
@@ -68,6 +70,10 @@ public class InventoryManager : MonoBehaviour
       return true;
    }
 
+   // if the inventory contains the item:
+   //     - if the item is stackable and there is more than one in the inventory:
+   //          - subtracts one from the item quantity
+   //     - else, completely removes item from inventory
    public bool Remove(Item item) {
     Slot temp = Contains(item);
     if (temp != null) {
@@ -79,25 +85,24 @@ public class InventoryManager : MonoBehaviour
             if (slot.GetItem() == item) {
               slotToRemove = slot;
               break;
+          }
       }
-    }
-    inventory.Remove(slotToRemove);
+      inventory.Remove(slotToRemove);
+      }
+  } else {
+  	return false;
+  	}
+  	RefreshUI();
+  	return true;
   }
-} else {
-  return false;
-}
-RefreshUI();
-return true;
-}
 
-   // if inventory contains slot with item, returns slot, else returns null
-   public Slot Contains(Item item) {
-    foreach (Slot slot in inventory) {
-      if (slot.GetItem() == item) {
+// if inventory contains slot with item, returns slot, else returns null
+public Slot Contains(Item item) {
+	foreach (Slot slot in inventory) {
+		if (slot.GetItem() == item) {
         return slot;
       }
     }
-
     return null;
    }
 }
