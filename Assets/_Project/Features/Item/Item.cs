@@ -11,6 +11,7 @@ public abstract class Item : ScriptableObject
     public string description;
     public TileBase tileRepresentation;
     public Sprite itemIcon;
+    public bool isStackable = true;
 
     public virtual void Use() { }
 

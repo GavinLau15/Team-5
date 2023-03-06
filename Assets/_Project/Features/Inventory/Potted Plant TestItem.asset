@@ -16,3 +16,5 @@ MonoBehaviour:
   name: Potted Plant
   description: small potted plant
   tileRepresentation: {fileID: 11400000, guid: cedafaef854f58246a4fc502b7234542, type: 2}
+  itemIcon: {fileID: 21300000, guid: 9fefaaf569c6bf441ab16ce4b42403be, type: 3}
+  isStackable: 0
