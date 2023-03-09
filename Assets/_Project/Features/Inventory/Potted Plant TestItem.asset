@@ -10,9 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: baaca77a30266d24084a437b3244e84e, type: 3}
-  m_Name: testItem1
+  m_Name: Potted Plant TestItem
   m_EditorClassIdentifier: 
   id: 0
-  name: test
-  description: a bush. press 1 to place a bush down
-  tileRepresentation: {fileID: 11400000, guid: a5ebb1bc86828904b9630e529100e636, type: 2}
+  name: Potted Plant
+  description: small potted plant
+  tileRepresentation: {fileID: 11400000, guid: cedafaef854f58246a4fc502b7234542, type: 2}
+  itemIcon: {fileID: 21300000, guid: 9fefaaf569c6bf441ab16ce4b42403be, type: 3}
+  isStackable: 0
