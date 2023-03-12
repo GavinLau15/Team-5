@@ -14,6 +14,9 @@ GameObject:
   - component: {fileID: 7105355922668990397}
   - component: {fileID: 2251172250182923196}
   - component: {fileID: 1427954265538697850}
+  - component: {fileID: 6599007048244203911}
+  - component: {fileID: 1526515733120711887}
+  - component: {fileID: 8272173212308488386}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -153,3 +156,48 @@ MonoBehaviour:
   waterTiles: {fileID: 0}
   fishingPrompt: {fileID: 0}
   fishingMiniGameUI: {fileID: 0}
+--- !u!114 &6599007048244203911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 886449311723805464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5125878214735414bb53a6a137c4590a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goldText: {fileID: 0}
+--- !u!114 &1526515733120711887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 886449311723805464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a8e7b7fdfbb083408bbb478e2995daf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectionSquare: 0
+  shopTiles: {fileID: 0}
+  shopPrompt: {fileID: 0}
+  shopUI: {fileID: 0}
+--- !u!114 &8272173212308488386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 886449311723805464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30d6629164ee6e34aa94f664347e0e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectionSquare: 0
+  fishMarketTiles: {fileID: 0}
+  fishMarketPrompt: {fileID: 0}
+  fishMarketUI: {fileID: 0}

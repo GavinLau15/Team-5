@@ -17,8 +17,8 @@ public class FishingController : MonoBehaviour
     void Update()
     {
         Vector2 playerPos = transform.position;
-        int playerX = (int)Mathf.Round(playerPos.x);
-        int playerY = (int)Mathf.Round(playerPos.y);
+        int playerX = (int)Mathf.Floor(playerPos.x);
+        int playerY = (int)Mathf.Floor(playerPos.y);
 
         if (!isFishingUIOpen)
             TryTriggerFishingPrompt(playerX, playerY);
@@ -74,7 +74,7 @@ public class FishingController : MonoBehaviour
             {
                 TileBase tile = waterTiles.GetTile(new Vector3Int(x, y, 0));
                 //TODO: Add a condition to check if fishing rod is equiped(?)
-                if (tile != null && tile.name == "tile_water")
+                if (tile != null) // And check tile = <tile_name> in tile pallette
                 {
                     fishingPrompt.SetActive(true);
                     return;

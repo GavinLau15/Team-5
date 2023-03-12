@@ -4,16 +4,26 @@ using UnityEngine;
 
 public class Player : MonoSingletonPersistent<Player>
 {
+    public GameObject toolBar;    
+
+    private bool isToolbarOpen;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        isToolbarOpen = false;
     }
 
     // Update is called once per frame
    
     void Update()
     {
+        toolBar.SetActive(isToolbarOpen);
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            isToolbarOpen = !isToolbarOpen;
+        }
+
         // press 1 to place tile directly under player
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
