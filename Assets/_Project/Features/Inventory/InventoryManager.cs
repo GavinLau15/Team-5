@@ -9,6 +9,7 @@ public class InventoryManager : MonoBehaviour {
   [SerializeField] private GameObject itemCursor;
 
 	[SerializeField] private GameObject mainInventory;
+  [SerializeField] private GameObject toolbarInventory;
 	[SerializeField] private Item itemToAdd;
 	[SerializeField] private Item itemToRemove;
   [SerializeField] private Slot[] startingItems;
@@ -16,11 +17,16 @@ public class InventoryManager : MonoBehaviour {
   private Slot[] inventory;
 
   private GameObject[] slots;
+  private GameObject[] toolbarSlots;
 
   private Slot movingSlot;
   private Slot tempSlot;
   private Slot originalSlot;
   bool isMovingItem;
+
+  [SerializeField] private GameObject toolbarSelector;
+  [SerializeField] private int selectedSlotIndex = 0;
+  public Item selectedItem;
 
 	// Tester method
 	// In the future, will change to when an item is clicked on/player
@@ -28,6 +34,12 @@ public class InventoryManager : MonoBehaviour {
 	private void Start() {
       slots = new GameObject[mainInventory.transform.childCount];
       inventory = new Slot[slots.Length];
+
+      toolbarSlots = new GameObject[toolbarInventory.transform.childCount];
+
+      for (int i = 0; i < toolbarSlots.Length; i++) {
+        toolbarSlots[i] = toolbarInventory.transform.GetChild(i).gameObject;
+      }
 
       for (int i = 0; i < inventory.Length; i++) {
         inventory[i] = new Slot();
@@ -67,6 +79,14 @@ public class InventoryManager : MonoBehaviour {
         BeginItemMove();
       }
     }
+
+    if (Input.GetAxis("Mouse ScrollWheel") > 0) {
+      selectedSlotIndex = Mathf.Clamp(selectedSlotIndex + 1, 0, toolbarSlots.Length - 1);
+    } else if (Input.GetAxis("Mouse ScrollWheel") < 0) {
+      selectedSlotIndex = Mathf.Clamp(selectedSlotIndex - 1, 0, toolbarSlots.Length - 1);
+    }
+    toolbarSelector.transform.position = toolbarSlots[selectedSlotIndex].transform.position;
+    selectedItem = inventory[selectedSlotIndex].GetItem();
    }
 
    // refreshes UI inventory by setting the item sprites and quanitities
@@ -87,7 +107,28 @@ public class InventoryManager : MonoBehaviour {
         slots[i].transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "";
       }
     }
+    RefreshToolbar();
   }
+
+  public void RefreshToolbar() {
+        for (int i = 0; i < toolbarSlots.Length; i++) {
+      try {
+        toolbarSlots[i].transform.GetChild(0).GetComponent<Image>().enabled = true;
+        toolbarSlots[i].transform.GetChild(0).GetComponent<Image>().sprite = inventory[i].GetItem().itemIcon;
+        
+        if (inventory[i].GetItem().isStackable) {
+          toolbarSlots[i].transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = inventory[i].GetQuantity().ToString();
+        } else {
+          slots[i].transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "";
+        }
+      } catch {
+        toolbarSlots[i].transform.GetChild(0).GetComponent<Image>().sprite = null;
+        toolbarSlots[i].transform.GetChild(0).GetComponent<Image>().enabled = false;
+        toolbarSlots[i].transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "";
+      }
+    }
+  }
+
 
   // if the inventory is not full:
   //      - checks if the inventory already contains the item and if the item is stackable
@@ -96,7 +137,7 @@ public class InventoryManager : MonoBehaviour {
    public bool Add(Item item, int quantity) {
     Slot slot = Contains(item);
     if (slot != null && slot.GetItem().isStackable) {
-      slot.AddQuantity(1);
+      slot.AddQuantity(quantity);
       } else {
         for (int i = 0; i< inventory.Length; i++) {
           if (inventory[i].GetItem() == null) { // this is an empty slot
