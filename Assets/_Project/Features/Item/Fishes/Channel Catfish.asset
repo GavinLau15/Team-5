@@ -16,4 +16,7 @@ MonoBehaviour:
   name: 
   description: 
   tileRepresentation: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 6c6f3fc948ec9e34fbfa19fd47bbfe04, type: 3}
+  isStackable: 1
+  fishType: 0
   dropChance: 0

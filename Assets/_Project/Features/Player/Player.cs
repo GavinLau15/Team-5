@@ -4,13 +4,10 @@ using UnityEngine;
 
 public class Player : MonoSingletonPersistent<Player>
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+    public LayerMask teleportPlayer;
+    [SerializeField] PlayerTileMovement playerTileMovement;
+    
+  
    
     void Update()
     {
@@ -25,7 +22,16 @@ public class Player : MonoSingletonPersistent<Player>
         {
             BuildingSystem.Instance.RemoveTile(Vector3Int.RoundToInt(this.transform.position + new Vector3(-0.5f, 0.5f, 0f)), BuildingSystem.Map.Static);
         }
+        
     }
 
-    
+    public void Teleport(Vector2 position)
+    {
+        playerTileMovement.Teleport(position);
+    }
+
+
+
+
+
 }
