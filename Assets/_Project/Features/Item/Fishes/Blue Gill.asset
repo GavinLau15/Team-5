@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1220f2cb960f8144b5c0037ddd5467c, type: 3}
   m_Name: Blue Gill
   m_EditorClassIdentifier: 
-  id: 1
+  id: 0
   name: Blue Gill
   description: 
   tileRepresentation: {fileID: 0}

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Black Crappie
   m_EditorClassIdentifier: 
   id: 0
-  name: Black Crappie
+  name: 'Trout '
   description: The most common fish found on the island.
-  tileRepresentation: {fileID: 11400000, guid: 19e6706e978613b428cde8e7badd7f9c, type: 2}
-  dropChance: 10
+  tileRepresentation: {fileID: 0}
+  dropChance: 100
