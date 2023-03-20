@@ -13,6 +13,8 @@ public class PlayerTileMovement : MonoBehaviour
     private Rigidbody2D rb;
     private Coroutine moveCoroutine;
     private bool isMoving = false;
+    Vector2 movement;
+    public Animator animator;
 
     public LayerMask whatStopsMovement;
     
@@ -24,6 +26,13 @@ public class PlayerTileMovement : MonoBehaviour
 
     private void Update()
     {
+        movement.x = Input.GetAxisRaw("Horizontal");
+        movement.y = Input.GetAxisRaw("Vertical");
+
+        animator.SetFloat("Horizontal", movement.x);
+        animator.SetFloat("Vertical", movement.y);
+        animator.SetFloat("Speed", movement.magnitude);
+
         Move();
     }
 
@@ -103,12 +112,16 @@ public class PlayerTileMovement : MonoBehaviour
         // while distance between new position and current position is not zero
         while((newPos - rb.position).sqrMagnitude > Mathf.Epsilon)
         {
+
+            
             //current position move toward new position 
             rb.position = Vector2.MoveTowards(rb.position, newPos, speed * Time.deltaTime);
             yield return null;
         }
 
         //rb.position = newPos;
+
+        // add here
 
         isMoving = false;
 
