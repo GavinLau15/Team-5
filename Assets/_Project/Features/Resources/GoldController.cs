@@ -5,13 +5,13 @@ using UnityEngine;
 
 public class GoldController : MonoSingletonPersistent<GoldController>
 {
-    private int gold;
+    public int gold;
     public TextMeshProUGUI goldText;
 
     // Start is called before the first frame update
     void Start()
     {
-        gold = 0;
+        gold = 1001;
     }
 
     public int getGold() {
