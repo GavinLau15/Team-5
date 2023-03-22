@@ -14,6 +14,10 @@ public class GoldController : MonoSingletonPersistent<GoldController>
         gold = 0;
     }
 
+    public int getGold() {
+        return this.gold;
+    }
+
     // Update is called once per frame
     void Update()
     {
