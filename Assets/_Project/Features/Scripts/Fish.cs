@@ -19,7 +19,4 @@ public class Fish : Item
     }
 
     public override Item getItem(){ return this; }
-    public override FishingRod getFishingRod() { return null; }
-    public override Fish getFish() { return this; }
-    public override Furniture getFurniture() { return null; }
 }
