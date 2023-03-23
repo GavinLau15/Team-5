@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class GoldController : MonoSingletonPersistent<GoldController>
 {
-    private int gold;
+    public int gold;
     public TextMeshProUGUI goldText;
 
     // Start is called before the first frame update
