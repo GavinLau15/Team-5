@@ -7,7 +7,7 @@ using TMPro;
 
 public class ShopManagerScript : MonoBehaviour
 {
-    public int [,] shopItems = new int[7,7];
+    public int [,] shopItems = new int[15,15];
     // TODO: change the above values according to how many tems there are
     //      - right now we have 6 items with 6 rows
     public GameObject goldCount; 
@@ -25,6 +25,12 @@ public class ShopManagerScript : MonoBehaviour
         shopItems[1,4] = 4;
         shopItems[1,5] = 5;
         shopItems[1,6] = 6;
+        shopItems[1,7] = 1;
+        shopItems[1,8] = 2;
+        shopItems[1,9] = 3;
+        shopItems[1,10] = 4;
+        shopItems[1,11] = 5;
+        shopItems[1,12] = 6;
 
         // Setting Price 
         shopItems[2,1] = 10;
@@ -33,6 +39,12 @@ public class ShopManagerScript : MonoBehaviour
         shopItems[2,4] = 5;
         shopItems[2,5] = 10;
         shopItems[2,6] = 15;
+        shopItems[2,7] = 10;
+        shopItems[2,8] = 5;
+        shopItems[2,9] = 20;
+        shopItems[2,10] = 5;
+        shopItems[2,11] = 10;
+        shopItems[2,12] = 15;
 
         // // Setting Type as to sell or to buy (1 = buy, 0 = sell)
         // // buy -> furniture
@@ -55,18 +67,25 @@ public class ShopManagerScript : MonoBehaviour
             // checking if we have enough coins to purchase our item and if the items is for buying or selling (second statement above)
             goldCount.GetComponent<GoldController>().SubtractGold(shopItems[2, ButtonRef.GetComponent<ButtonInfo>().itemID]); // subtract the amount it costed from the ammount of coins 
             coinsTXT.text = "Coins: $" + goldCount.GetComponent<GoldController>().gold.ToString();
-
+        } else {
+            errorNoMoney();
         }
     }
 
-    // public void Sell() 
-    // {
-    //     GameObject ButtonRef = GameObject.FindObjectOfType(Event).GetComponent<Event>().currentSelectedGameObject;
-    //     if (shopItems[2, ButtonRef.GetComponent<ButtonInfo>().itemID] == 0) {  // TODO: need to add a check here to see if the player has a fish to sell 
-    //         // checking if we have enough coins to purchase our item and if the items is for buying or selling (second statement above)
-    //         goldCount.AddGold(goldCount.getGold() + shopItems[2, ButtonRef.GetComponent<ButtonInfo>().itemID]); // subtract the amount it costed from the ammount of coins 
-    //         coinsTxt.text = "Coins: $" + goldCount.getGold().ToString();
-            
-    //     }
-    // }
+    // TODO: fix this so that it displays a success message when added sucessfully and an error message if there aren't enough coins
+    public IEnumerator errorNoMoney() {
+        coinsTXT.text = "Not enough money!";
+        yield return new WaitForSeconds(4);
+        coinsTXT.text = "Coins: $" + goldCount.GetComponent<GoldController>().gold.ToString();
+    }
+
+    public void Sell() 
+    {
+        GameObject ButtonRef = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject;
+         // if ((goldCount.GetComponent<GoldController>().gold >= shopItems[2, ButtonRef.GetComponent<ButtonInfo>().itemID])) { 
+            // checking if we have enough coins to purchase our item and if the items is for buying or selling (second statement above)
+        goldCount.GetComponent<GoldController>().AddGold(shopItems[2, ButtonRef.GetComponent<ButtonInfo>().itemID]); // subtract the amount it costed from the ammount of coins 
+        coinsTXT.text = "Coins: $ " + goldCount.GetComponent<GoldController>().gold.ToString();
+        // }
+    }
 }

@@ -2,16 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GoldController : MonoSingletonPersistent<GoldController>
 {
     public int gold;
-    public TextMeshProUGUI goldText;
+    public GameObject goldText;
 
     // Start is called before the first frame update
     void Start()
     {
-        gold = 1001;
+        gold = 20;
     }
 
     public int getGold() {
@@ -21,7 +22,7 @@ public class GoldController : MonoSingletonPersistent<GoldController>
     // Update is called once per frame
     void Update()
     {
-        goldText.text = gold.ToString();
+        goldText.GetComponent<Text>().text = gold.ToString();
     }
 
     public void AddGold(int amount)
