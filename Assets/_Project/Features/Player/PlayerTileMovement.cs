@@ -31,12 +31,10 @@ public class PlayerTileMovement : MonoBehaviour
         movement.y = Input.GetAxisRaw("Vertical");
 
 
-        if (animator != null)
-        {
-            animator.SetFloat("Horizontal", movement.x);
-            animator.SetFloat("Vertical", movement.y);
-            animator.SetFloat("Speed", movement.magnitude);
-        }
+
+        animator.SetFloat("Horizontal", movement.x);
+        animator.SetFloat("Vertical", movement.y);
+        animator.SetFloat("Speed", movement.magnitude);
 
 
         Move();
