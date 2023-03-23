@@ -96,6 +96,7 @@ public class FishingController : MonoBehaviour
             print(fishCaptured.name);
             // add to inventory here
             InventoryManager.Instance.Add(fishCaptured, 1);
+            GoldController.Instance.AddGold(fishCaptured.saleValue);
         }
         else
         {

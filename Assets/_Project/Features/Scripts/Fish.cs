@@ -8,6 +8,7 @@ public class Fish : Item
 {
 	public FishType fishType;
     public int dropChance;
+    public int saleValue;
     
     public enum FishType 
     {
