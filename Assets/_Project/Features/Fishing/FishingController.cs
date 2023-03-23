@@ -91,8 +91,17 @@ public class FishingController : MonoBehaviour
     {
         //TODO: this should call GetFish() to determine what fish to get, then add the fish by calling the inventory system -michael
         Fish fishCaptured = GetFish();
-        print(fishCaptured.name);
-        // add to inventory here
+        if (fishCaptured != null)
+        {
+            print(fishCaptured.name);
+            // add to inventory here
+            InventoryManager.Instance.Add(fishCaptured, 1);
+        }
+        else
+        {
+            Debug.LogWarning("Fish captured is null!");
+        }
+        
     }
 
     private Fish GetFish()
