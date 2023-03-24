@@ -99,6 +99,19 @@ public class InventoryManager : MonoSingletonPersistent<InventoryManager>
         }
         toolbarSelector.transform.position = toolbarSlots[selectedSlotIndex].transform.position;
         selectedItem = inventory[selectedSlotIndex].GetItem();
+
+        // press 1 to use selected item 
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            ItemSystem.Instance.GetItem(selectedItem.id).Use();
+            Remove(selectedItem);
+        }
+
+        //press 2 to remove tile above player
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            BuildingSystem.Instance.RemoveTile(Vector3Int.RoundToInt(this.transform.position + new Vector3(-0.5f, 0.5f, 0f)), BuildingSystem.Map.Static);
+        }
     }
 
     // refreshes UI inventory by setting the item sprites and quanitities
