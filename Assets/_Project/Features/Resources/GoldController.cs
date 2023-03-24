@@ -11,7 +11,7 @@ public class GoldController : MonoSingletonPersistent<GoldController>
     // Start is called before the first frame update
     void Start()
     {
-        gold = 0;
+        gold = 100;
     }
 
     // Update is called once per frame

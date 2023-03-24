@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+// using InventoryManager;
 // using static UnityEngine.Event;
 
 public class ShopManagerScript : MonoBehaviour
@@ -12,6 +13,7 @@ public class ShopManagerScript : MonoBehaviour
     //      - right now we have 6 items with 6 rows
     public GameObject goldCount; 
     public TextMeshProUGUI coinsTXT;
+    // public GameObject inventoryManager;
 
     void Start()
     {
@@ -25,20 +27,20 @@ public class ShopManagerScript : MonoBehaviour
         shopItems[1,4] = 4;
         shopItems[1,5] = 5;
         shopItems[1,6] = 6;
-        shopItems[1,7] = 1;
-        shopItems[1,8] = 2;
-        shopItems[1,9] = 3;
-        shopItems[1,10] = 4;
-        shopItems[1,11] = 5;
-        shopItems[1,12] = 6;
+        shopItems[1,7] = 7;
+        shopItems[1,8] = 8;
+        shopItems[1,9] = 9;
+        shopItems[1,10] = 10;
+        shopItems[1,11] = 11;
+        shopItems[1,12] = 12;
 
         // Setting Price 
-        shopItems[2,1] = 10;
-        shopItems[2,2] = 5;
-        shopItems[2,3] = 20;
-        shopItems[2,4] = 5;
-        shopItems[2,5] = 10;
-        shopItems[2,6] = 15;
+        shopItems[2,1] = 50;
+        shopItems[2,2] = 70;
+        shopItems[2,3] = 40;
+        shopItems[2,4] = 50;
+        shopItems[2,5] = 60;
+        shopItems[2,6] = 35;
         shopItems[2,7] = 10;
         shopItems[2,8] = 5;
         shopItems[2,9] = 20;
@@ -58,6 +60,11 @@ public class ShopManagerScript : MonoBehaviour
 
     }
 
+    void Update()
+    {
+        coinsTXT.text = "Coins: $" + goldCount.GetComponent<GoldController>().gold.ToString();
+    }
+
     
     public void Buy()
     {
@@ -67,9 +74,11 @@ public class ShopManagerScript : MonoBehaviour
             // checking if we have enough coins to purchase our item and if the items is for buying or selling (second statement above)
             goldCount.GetComponent<GoldController>().SubtractGold(shopItems[2, ButtonRef.GetComponent<ButtonInfo>().itemID]); // subtract the amount it costed from the ammount of coins 
             coinsTXT.text = "Coins: $" + goldCount.GetComponent<GoldController>().gold.ToString();
-        } else {
-            errorNoMoney();
-        }
+            // inventoryManager.GetComponent<InventoryManager>().add(, 1);
+        } 
+        //else {
+            //errorNoMoney();
+        //}
     }
 
     // TODO: fix this so that it displays a success message when added sucessfully and an error message if there aren't enough coins

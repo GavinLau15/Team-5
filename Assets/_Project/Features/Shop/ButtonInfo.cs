@@ -10,13 +10,16 @@ public class ButtonInfo : MonoBehaviour
     public TextMeshProUGUI Price;
     public TextMeshProUGUI Type;
     public GameObject shopManager;
+    public int PriceNum; 
+    // public string type; // the type of furniture item will be instantiated when it is clicked 
     // Start is called before the first frame update
     void Update()
     {
+        // Price.text = "Price: " + shopManager.GetComponent<ShopManagerScript>().shopItems[2, itemID].ToString();
         if (itemID > 6) {
-             Price.text = "Earn: $ "+ shopManager.GetComponent<ShopManagerScript>().shopItems[2, itemID].ToString();
-        } else {
-            Price.text = "Price: $ "+ shopManager.GetComponent<ShopManagerScript>().shopItems[2, itemID].ToString();
+        Price.text = "Earn: $ "+ PriceNum.ToString();
+       } else {
+          Price.text = "Price: $ "+ PriceNum.ToString();
         }
         // get the price from the second columns because that is where our price is located 
         // Price.text = "Name: " + shopManager.GetComponent.<ShopManagerScript>().shopItems[2, itemID].ToString(); 
