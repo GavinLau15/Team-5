@@ -8,7 +8,7 @@ public class InventoryManager : MonoSingletonPersistent<InventoryManager>
     [SerializeField] private GameObject itemCursor;
     [SerializeField] private GameObject mainInventory;
     [SerializeField] private GameObject toolbarInventory;
-    [SerializeField] private Item itemToAdd;
+    [SerializeField] public Item itemToAdd;
     [SerializeField] private Item itemToRemove;
     [SerializeField] private Slot[] startingItems;
 

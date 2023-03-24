@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Tilemaps;
 
 public class ButtonInfo : MonoBehaviour
 {
@@ -11,7 +12,9 @@ public class ButtonInfo : MonoBehaviour
     public TextMeshProUGUI Type;
     public GameObject shopManager;
     public int PriceNum; 
-    // public string type; // the type of furniture item will be instantiated when it is clicked 
+    public string type; // the type of furniture item will be instantiated when it is clicked 
+    public Item icon;
+
     // Start is called before the first frame update
     void Update()
     {

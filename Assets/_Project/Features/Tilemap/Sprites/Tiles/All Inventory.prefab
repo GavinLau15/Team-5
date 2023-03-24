@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5912451024412546609
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5912451024412546611}
+  - component: {fileID: 5912451024412546608}
+  m_Layer: 0
+  m_Name: All Inventory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5912451024412546611
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5912451024412546609}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5912451024412546608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5912451024412546609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40b953aa97be243e2887da85985cd8af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemCursor: {fileID: 0}
+  mainInventory: {fileID: 0}
+  toolbarInventory: {fileID: 0}
+  itemToAdd: {fileID: 11400000, guid: 938931ff14d5eac41a586c588ec7ec01, type: 2}
+  itemToRemove: {fileID: 11400000, guid: 938931ff14d5eac41a586c588ec7ec01, type: 2}
+  startingItems:
+  - item: {fileID: 11400000, guid: dd0fd95b6f410409fb8c3d145bf5ba4d, type: 2}
+    quantity: 1
+  - item: {fileID: 11400000, guid: 938931ff14d5eac41a586c588ec7ec01, type: 2}
+    quantity: 3
+  - item: {fileID: 11400000, guid: 938931ff14d5eac41a586c588ec7ec01, type: 2}
+    quantity: 3
+  - item: {fileID: 11400000, guid: 89a2c595f1c97430cb5cd20466fcb738, type: 2}
+    quantity: 3
+  toolbarSelector: {fileID: 0}
+  selectedSlotIndex: 0
+  selectedItem: {fileID: 0}

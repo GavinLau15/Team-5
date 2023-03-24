@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Tilemaps;
 // using InventoryManager;
 // using static UnityEngine.Event;
 
@@ -13,7 +14,7 @@ public class ShopManagerScript : MonoBehaviour
     //      - right now we have 6 items with 6 rows
     public GameObject goldCount; 
     public TextMeshProUGUI coinsTXT;
-    // public GameObject inventoryManager;
+    public GameObject inventory;
 
     void Start()
     {
@@ -64,7 +65,7 @@ public class ShopManagerScript : MonoBehaviour
             // checking if we have enough coins to purchase our item and if the items is for buying or selling (second statement above)
             goldCount.GetComponent<GoldController>().SubtractGold(shopItems[2, ButtonRef.GetComponent<ButtonInfo>().itemID]); // subtract the amount it costed from the ammount of coins 
             coinsTXT.text = "Coins: $" + goldCount.GetComponent<GoldController>().gold.ToString();
-            
+            addToInventory(ButtonRef.GetComponent<ButtonInfo>().type, ButtonRef.GetComponent<ButtonInfo>().itemID, ButtonRef.GetComponent<ButtonInfo>().icon);
             // inventoryManager.GetComponent<InventoryManager>().add(, 1);
         } else {
             StartCoroutine(errorNoMoney());
@@ -81,18 +82,24 @@ public class ShopManagerScript : MonoBehaviour
     public void Sell() 
     {
         GameObject ButtonRef = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject;
-         // if ((goldCount.GetComponent<GoldController>().gold >= shopItems[2, ButtonRef.GetComponent<ButtonInfo>().itemID])) { 
-            // checking if we have enough coins to purchase our item and if the items is for buying or selling (second statement above)
+        if (inventory.GetComponent<InventoryManager>().Contains(ButtonRef.GetComponent<ButtonInfo>().icon) != null) { 
         goldCount.GetComponent<GoldController>().AddGold(shopItems[2, ButtonRef.GetComponent<ButtonInfo>().itemID]); // subtract the amount it costed from the ammount of coins 
         coinsTXT.text = "Coins: $ " + goldCount.GetComponent<GoldController>().gold.ToString();
-        // }
+        }
     }
 
-    public void addToInventory(string item) {
-
+    public void addToInventory(string item, int id, Item newItem) {
+        // FurniturePlaceHolder newItem = new FurniturePlaceHolder();
+        // newItem.setID(id);
+        // newItem.setName(item);
+        // newItem.setIcon(tile);
+        // newItem.setTile(tile);
+        inventory.GetComponent<InventoryManager>().Add(newItem, 1);
+        // InventoryManager.Instance.Add(newItem, 1);
     }
 
-     public void removeFromInventory() {
-        
+     public void removeFromInventory(Item toRemove) {
+        InventoryManager.Instance.Remove(toRemove);
+        //inventory.GetComponent<InventoryManager>().Remove(toRemove);
     }
 }
