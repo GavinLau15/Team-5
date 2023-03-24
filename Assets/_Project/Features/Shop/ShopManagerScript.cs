@@ -85,6 +85,7 @@ public class ShopManagerScript : MonoBehaviour
         if (inventory.GetComponent<InventoryManager>().Contains(ButtonRef.GetComponent<ButtonInfo>().icon) != null) { 
         goldCount.GetComponent<GoldController>().AddGold(shopItems[2, ButtonRef.GetComponent<ButtonInfo>().itemID]); // subtract the amount it costed from the ammount of coins 
         coinsTXT.text = "Coins: $ " + goldCount.GetComponent<GoldController>().gold.ToString();
+        removeFromInventory(ButtonRef.GetComponent<ButtonInfo>().icon);
         }
     }
 

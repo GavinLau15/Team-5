@@ -14934,7 +14934,7 @@ PrefabInstance:
       objectReference: {fileID: 1763066573}
     - target: {fileID: 3471207506821972990, guid: 9aae2590fb58b2b43b86befd9af94de0, type: 3}
       propertyPath: gold
-      value: 100
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 3471207506821972990, guid: 9aae2590fb58b2b43b86befd9af94de0, type: 3}
       propertyPath: goldText
