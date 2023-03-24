@@ -48,16 +48,6 @@ public class ShopManagerScript : MonoBehaviour
         shopItems[2,11] = 10;
         shopItems[2,12] = 15;
 
-        // // Setting Type as to sell or to buy (1 = buy, 0 = sell)
-        // // buy -> furniture
-        // // sell -> fish for money 
-        // shopItems[3,1] = 1;
-        // shopItems[3,2] = 1;
-        // shopItems[3,3] = 1;
-        // shopItems[3,4] = 1;
-        // shopItems[3,5] = 0;
-        // shopItems[3,6] = 0;
-
     }
 
     void Update()
@@ -74,18 +64,18 @@ public class ShopManagerScript : MonoBehaviour
             // checking if we have enough coins to purchase our item and if the items is for buying or selling (second statement above)
             goldCount.GetComponent<GoldController>().SubtractGold(shopItems[2, ButtonRef.GetComponent<ButtonInfo>().itemID]); // subtract the amount it costed from the ammount of coins 
             coinsTXT.text = "Coins: $" + goldCount.GetComponent<GoldController>().gold.ToString();
+            
             // inventoryManager.GetComponent<InventoryManager>().add(, 1);
-        } 
-        //else {
-            //errorNoMoney();
-        //}
+        } else {
+            StartCoroutine(errorNoMoney());
+        }
     }
 
     // TODO: fix this so that it displays a success message when added sucessfully and an error message if there aren't enough coins
     public IEnumerator errorNoMoney() {
-        coinsTXT.text = "Not enough money!";
         yield return new WaitForSeconds(4);
-        coinsTXT.text = "Coins: $" + goldCount.GetComponent<GoldController>().gold.ToString();
+        coinsTXT.text = "Not enough money!";
+        // coinsTXT.text = "Coins: $" + goldCount.GetComponent<GoldController>().gold.ToString();
     }
 
     public void Sell() 
@@ -96,5 +86,13 @@ public class ShopManagerScript : MonoBehaviour
         goldCount.GetComponent<GoldController>().AddGold(shopItems[2, ButtonRef.GetComponent<ButtonInfo>().itemID]); // subtract the amount it costed from the ammount of coins 
         coinsTXT.text = "Coins: $ " + goldCount.GetComponent<GoldController>().gold.ToString();
         // }
+    }
+
+    public void addToInventory(string item) {
+
+    }
+
+     public void removeFromInventory() {
+        
     }
 }
