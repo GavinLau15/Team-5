@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: Floor (176 x 112)
+  m_Name: Floor - no carpet (176 x 112)
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: 10e89ab4c9c27fb4ba7d636d92a61b6e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 00cb0d8437b54c043a77128fb2116c2e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
