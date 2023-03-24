@@ -13,6 +13,18 @@ MonoBehaviour:
   m_Name: Item Database
   m_EditorClassIdentifier: 
   items:
-  - {fileID: 11400000, guid: 6ede00d2e1cd27645a9d4c0e9263d2f0, type: 2}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 89a2c595f1c97430cb5cd20466fcb738, type: 2}
+  - {fileID: 11400000, guid: 323d7b3993a278f44853b05a25bd99ce, type: 2}
+  - {fileID: 11400000, guid: 1304ad806f663f545aeb1e8b27164082, type: 2}
+  - {fileID: 11400000, guid: 2489d7e025113c5438d43507bb908d44, type: 2}
+  - {fileID: 11400000, guid: b6873257919b97d458178d0bd861f964, type: 2}
+  - {fileID: 11400000, guid: 63bdb216f1122784d9097f472dc9748c, type: 2}
+  - {fileID: 11400000, guid: b538e494193df4348a4746f738cc4a28, type: 2}
+  - {fileID: 11400000, guid: 034bf09e829eea246907ee85c3a3f49f, type: 2}
+  fishes:
+  - {fileID: 11400000, guid: 86e3d1a13feb223479ecba9093f4d841, type: 2}
+  - {fileID: 11400000, guid: b0d2a27cbc90c944bb8039bd53af9fc2, type: 2}
+  - {fileID: 11400000, guid: d3a8ce9fe48cade42bb9f5786fa84cbe, type: 2}
+  - {fileID: 11400000, guid: 2b668ab804e17bb428af1dab4d547d25, type: 2}
+  - {fileID: 11400000, guid: 938931ff14d5eac41a586c588ec7ec01, type: 2}
   - {fileID: 0}

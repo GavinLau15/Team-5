@@ -14,7 +14,7 @@ public class Player : MonoSingletonPersistent<Player>
         // press 1 to place tile directly under player
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            ItemSystem.Instance.GetItem(0).Use();
+            ItemSystem.Instance.GetItem(1).Use();
         }
 
         //press 2 to remove tile directly under player
