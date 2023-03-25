@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: Bed 2 (32 x 16)
+  m_Name: Round Table
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: 626dbff3193e7574abe580e6d35c2b1b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 87a1d1c9e1ac12746afb31c2f548526c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1

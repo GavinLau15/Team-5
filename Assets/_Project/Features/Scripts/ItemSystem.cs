@@ -12,6 +12,11 @@ public class ItemSystem : MonoSingletonPersistent<ItemSystem>
         return itemDatabase.items.Find(item => item.id == id);
     }
 
+    public Item GetItemByName(string name)
+    {
+        return itemDatabase.items.Find(item => item.name == name);
+    }
+
     public List<Fish> GetFishList() 
     {
         return itemDatabase.fishes;

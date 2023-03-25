@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Chair
   m_EditorClassIdentifier: 
   id: 3
-  name: Chair
+  name: Chair 1
   description: A chair
   tileRepresentation: {fileID: 11400000, guid: bbf21bdb5e66bb447a186a344dbe7f81, type: 2}
   itemIcon: {fileID: 21300000, guid: d5b8f5524cb86e9458d51f1c6d1ffc48, type: 3}

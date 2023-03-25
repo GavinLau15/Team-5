@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 using UnityEngine.UI;
 
 // Manages the overall inventory 
@@ -111,8 +112,11 @@ public class InventoryManager : MonoSingletonPersistent<InventoryManager>
         //press 2 to remove tile above player
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            Debug.Log("pressed 2");
+            TileBase tileRemoved = BuildingSystem.Instance.GetTile(Vector3Int.RoundToInt(player.transform.position + new Vector3(-0.5f, 0.5f, 0f)), BuildingSystem.Map.Static);
+            Add(ItemSystem.Instance.GetItemByName(tileRemoved.name), 1);
             BuildingSystem.Instance.RemoveTile(Vector3Int.RoundToInt(player.transform.position + new Vector3(-0.5f, 0.5f, 0f)), BuildingSystem.Map.Static);
+
+            
         }
     }
 
