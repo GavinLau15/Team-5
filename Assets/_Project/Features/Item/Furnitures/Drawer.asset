@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Drawer
   m_EditorClassIdentifier: 
   id: 4
-  name: Drawer
+  name: Drawer 1
   description: 
   tileRepresentation: {fileID: 11400000, guid: 89aa6d8117d33f84b8953d073f88f470, type: 2}
   itemIcon: {fileID: 21300000, guid: 4271a4be72f651744ae545ba9a670991, type: 3}
