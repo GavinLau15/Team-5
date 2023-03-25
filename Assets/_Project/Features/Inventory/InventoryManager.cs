@@ -90,13 +90,13 @@ public class InventoryManager : MonoSingletonPersistent<InventoryManager>
             }
         }
 
-        if (Input.GetAxis("Mouse ScrollWheel") > 0)
+        if (Input.GetButtonDown("Horizontal") && Input.GetAxisRaw("Horizontal") > 0 && selectedSlotIndex < toolbarSlots.Length - 1)
         {
-            selectedSlotIndex = Mathf.Clamp(selectedSlotIndex + 1, 0, toolbarSlots.Length - 1);
+            selectedSlotIndex += 1;
         }
-        else if (Input.GetAxis("Mouse ScrollWheel") < 0)
+        else if (Input.GetButtonDown("Horizontal") && Input.GetAxisRaw("Horizontal") < 0 && selectedSlotIndex != 0)
         {
-            selectedSlotIndex = Mathf.Clamp(selectedSlotIndex - 1, 0, toolbarSlots.Length - 1);
+            selectedSlotIndex -= 1;
         }
         toolbarSelector.transform.position = toolbarSlots[selectedSlotIndex].transform.position;
         selectedItem = inventory[selectedSlotIndex].GetItem();
