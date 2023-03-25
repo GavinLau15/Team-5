@@ -11,6 +11,7 @@ public class InventoryManager : MonoSingletonPersistent<InventoryManager>
     [SerializeField] private Item itemToAdd;
     [SerializeField] private Item itemToRemove;
     [SerializeField] private Slot[] startingItems;
+    [SerializeField] private GameObject player;
 
     private Slot[] inventory;
 
@@ -110,7 +111,8 @@ public class InventoryManager : MonoSingletonPersistent<InventoryManager>
         //press 2 to remove tile above player
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            BuildingSystem.Instance.RemoveTile(Vector3Int.RoundToInt(this.transform.position + new Vector3(-0.5f, 0.5f, 0f)), BuildingSystem.Map.Static);
+            Debug.Log("pressed 2");
+            BuildingSystem.Instance.RemoveTile(Vector3Int.RoundToInt(player.transform.position + new Vector3(-0.5f, 0.5f, 0f)), BuildingSystem.Map.Static);
         }
     }
 

@@ -68,6 +68,7 @@ MonoBehaviour:
     quantity: 3
   - item: {fileID: 11400000, guid: 1304ad806f663f545aeb1e8b27164082, type: 2}
     quantity: 3
+  player: {fileID: 0}
   toolbarSelector: {fileID: 0}
   selectedSlotIndex: 0
   selectedItem: {fileID: 0}
