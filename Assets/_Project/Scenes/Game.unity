@@ -6308,6 +6308,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 940404334}
   m_CullTransparentMesh: 1
+--- !u!1839735485 &942542460 stripped
+Tilemap:
+  m_CorrespondingSourceObject: {fileID: 7438853180823104344, guid: 3f7c1c3ab2d2c9e4a8d5e605cda994f6, type: 3}
+  m_PrefabInstance: {fileID: 7402872764031334298}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &966933583
 GameObject:
   m_ObjectHideFlags: 0
@@ -7235,7 +7240,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 297, y: -222}
+  m_AnchoredPosition: {x: 290, y: -143}
   m_SizeDelta: {x: 48, y: 48}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1081630695
@@ -14156,9 +14161,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   detectionSquare: 2
-  shopTiles: {fileID: 0}
-  shopPrompt: {fileID: 0}
-  shopUI: {fileID: 0}
+  shopTiles: {fileID: 942542460}
+  shopPrompt: {fileID: 1009350878}
+  shopUI: {fileID: 97451131}
+  delay: 1
+--- !u!114 &2082995310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2082995293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30d6629164ee6e34aa94f664347e0e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectionSquare: 2
+  fishMarketTiles: {fileID: 942542460}
+  fishMarketPrompt: {fileID: 51118885}
+  fishMarketUI: {fileID: 685484297}
   delay: 1
 --- !u!1 &2098049634
 GameObject:
