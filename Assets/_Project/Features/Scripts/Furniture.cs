@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.UI;
 using UnityEngine;
-using UnityEngine.Tilemaps;
+
 
 [CreateAssetMenu(menuName = "Items/Furniture")]
 public class Furniture : Item

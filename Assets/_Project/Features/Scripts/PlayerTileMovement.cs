@@ -1,10 +1,5 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.TextCore.Text;
 using UnityEngine;
-using UnityEngine.UIElements;
-using static System.TimeZoneInfo;
 
 public class PlayerTileMovement : MonoBehaviour
 {
