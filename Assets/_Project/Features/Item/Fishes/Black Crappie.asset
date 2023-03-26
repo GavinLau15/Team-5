@@ -19,4 +19,5 @@ MonoBehaviour:
   itemIcon: {fileID: 21300000, guid: 10e32d5152a100c4cb61a581bbd94565, type: 3}
   isStackable: 1
   fishType: 0
-  dropChance: 100
+  dropChance: 50
+  saleValue: 15
