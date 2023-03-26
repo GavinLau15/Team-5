@@ -45,7 +45,6 @@ public class FishingController : MonoBehaviour
                 FindObjectOfType<FishingUIController>().overlappedTime = FishingUIController.START_OVERLAPPED_TIME;
                 fishingMiniGameUI.SetActive(false);
                 isFishingSucceeded = true;
-                // FindObjectOfType<GoldController>().AddGold(2); test
                 print("You got a fish");
             }
             else if (FindObjectOfType<FishingUIController>().overlappedTime <= 0)
@@ -58,8 +57,9 @@ public class FishingController : MonoBehaviour
 
         if (isFishingSucceeded)
         {
-            AwardFish();
             isFishingSucceeded = false;
+            AwardFish();
+            
         }
     }
 
@@ -73,7 +73,6 @@ public class FishingController : MonoBehaviour
             for (int x = playerX - detectionSquare; x <= playerX + detectionSquare; x++)
             {
                 TileBase tile = waterTiles.GetTile(new Vector3Int(x, y, 0));
-                //TODO: Add a condition to check if fishing rod is equiped(?)
                 if (tile != null && tile.name == "tile_water")
                 {
                     fishingPrompt.SetActive(true);
@@ -89,12 +88,10 @@ public class FishingController : MonoBehaviour
 
     private void AwardFish()
     {
-        //TODO: this should call GetFish() to determine what fish to get, then add the fish by calling the inventory system -michael
         Fish fishCaptured = GetFish();
         if (fishCaptured != null)
         {
             print(fishCaptured.name);
-            // add to inventory here
             InventoryManager.Instance.Add(fishCaptured, 1);
             GoldController.Instance.AddGold(fishCaptured.saleValue);
         }
@@ -112,7 +109,10 @@ public class FishingController : MonoBehaviour
 
         foreach (Fish fish in fishDropRates)
         {
-            total += fish.dropChance;
+            if (fish != null)
+            {
+                total += fish.dropChance;
+            }
         }
 
         int rng = Random.Range(0, total);
