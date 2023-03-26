@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   name: Blue Gill
-  description: 
+  description: It has blue gills, nothing more to say about this one.
   tileRepresentation: {fileID: 0}
   itemIcon: {fileID: 21300000, guid: 88163da8c84fe97438c2f9fa8d1c6b1e, type: 3}
   isStackable: 1
