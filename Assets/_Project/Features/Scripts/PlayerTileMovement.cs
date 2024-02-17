@@ -7,32 +7,20 @@ public class PlayerTileMovement : MonoBehaviour
 
     private Rigidbody2D rb;
     private Coroutine moveCoroutine;
-    private bool isMoving = false;
-    Vector2 movement;
     public Animator animator;
-
     public LayerMask whatStopsMovement;
-    
+
+    public bool IsMoving { get; private set; }
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        rb.position = GetSnappedPosition(rb.position);
     }
 
     private void Update()
     {
-
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
-
-
-
-        animator.SetFloat("Horizontal", movement.x);
-        animator.SetFloat("Vertical", movement.y);
-        animator.SetFloat("Speed", movement.magnitude);
-
-
-        Move();
+        Move(GetDirection());
     }
 
     private Vector2 GetDirection()
@@ -62,69 +50,63 @@ public class PlayerTileMovement : MonoBehaviour
         return direction.normalized;
     }
 
-    private void Move()
+    private void Move(Vector2 direction)
     {
         // if player is moving already
-        if (isMoving == true)
+        if (IsMoving)
         {
             return;
         }
 
         // if direction is zero
-        if (GetDirection() == Vector2.zero)
+        if (direction == Vector2.zero)
+        {
+            StopMovement();
+            return;
+        }
+
+        Vector2Int position = GetSnappedPosition(rb.position + direction);
+
+        // if the overlap circle detects tile in whatStopsMovement layer, it prevents the movement.
+        if (Physics2D.OverlapPoint(position, whatStopsMovement))
         {
             return;
         }
 
-        Vector2 moveToPosition = rb.position + GetDirection();
+        // Start movement.
+        moveCoroutine = StartCoroutine(MoveRoutine(position));
+        SetAnimation(direction);
+    }
 
-        if (!Physics2D.OverlapPoint(moveToPosition, whatStopsMovement))
+    // to acheive moving one tile at a time
+    private IEnumerator MoveRoutine(Vector2Int position)
+    {
+        IsMoving = true;
+
+        // while distance between new position and current position is not zero
+        while ((position - rb.position).sqrMagnitude > Mathf.Epsilon)
         {
-
-            StopMovement();
-
-            //if the overlap circle detects tile in whatStopsMovement layer, it prevents the movement.
-            moveCoroutine = StartCoroutine(MoveHelper(moveToPosition));
-
+            // current position move toward new position 
+            rb.position = Vector2.MoveTowards(rb.position, position, speed * Time.deltaTime);
+            yield return null;
         }
+        
+        // Snap to position at the end, avoiding floating error.
+        rb.position = position;
 
+        IsMoving = false;
     }
 
     public void StopMovement()
     {
+        IsMoving = false;
 
-        if (moveCoroutine != null) 
+        if (moveCoroutine != null)
         {
             StopCoroutine(moveCoroutine);
-            
         }
 
-        isMoving = false;
-    }
-    
-
-    // to acheive moving one tile at a time
-    IEnumerator MoveHelper(Vector2 newPos)
-    {
-        isMoving = true;
-
-        // while distance between new position and current position is not zero
-        while((newPos - rb.position).sqrMagnitude > Mathf.Epsilon)
-        {
-
-            
-            //current position move toward new position 
-            rb.position = Vector2.MoveTowards(rb.position, newPos, speed * Time.deltaTime);
-            yield return null;
-        }
-
-        //rb.position = newPos;
-
-        // add here
-
-
-        isMoving = false;
-
+        SetAnimation(Vector2.zero);
     }
 
     public void Teleport(Vector2 position)
@@ -133,4 +115,15 @@ public class PlayerTileMovement : MonoBehaviour
         TransitionManager.Instance.StartTransition(() => rb.position = position);
     }
 
+    private void SetAnimation(Vector2 direction)
+    {
+        animator.SetFloat("Horizontal", direction.x);
+        animator.SetFloat("Vertical", direction.y);
+        animator.SetFloat("Speed", direction.magnitude);
+    }
+
+    private Vector2Int GetSnappedPosition(Vector2 position)
+    {
+        return new Vector2Int(Mathf.RoundToInt(position.x), Mathf.RoundToInt(position.y));
+    }
 }

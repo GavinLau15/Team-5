@@ -10,15 +10,14 @@ public class TransitionManager : MonoSingleton<TransitionManager>
     protected override void Awake()
     {
         base.Awake();
+        canvasGroup.alpha = 0f;
         canvasGroup.interactable = false;
         canvasGroup.blocksRaycasts = false;
-        canvasGroup.alpha = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-
         // testing
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
