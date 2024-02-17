@@ -7,9 +7,18 @@ public class TransitionManager : MonoSingleton<TransitionManager>
     public float transitionTime = 1f;
     Coroutine transitionRoutine;
 
+    protected override void Awake()
+    {
+        base.Awake();
+        canvasGroup.interactable = false;
+        canvasGroup.blocksRaycasts = false;
+        canvasGroup.alpha = 0;
+    }
+
     // Update is called once per frame
     void Update()
     {
+
         // testing
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
@@ -28,8 +37,8 @@ public class TransitionManager : MonoSingleton<TransitionManager>
     {
         float timePassed = 0f;
         canvasGroup.alpha = 0;
-        canvasGroup.interactable = false;
-        canvasGroup.blocksRaycasts = false;
+        canvasGroup.interactable = true;
+        canvasGroup.blocksRaycasts = true;
         
         while (canvasGroup.alpha < 1)
         {
@@ -52,8 +61,8 @@ public class TransitionManager : MonoSingleton<TransitionManager>
         }
 
         canvasGroup.alpha = 0;
-        canvasGroup.interactable = true;
-        canvasGroup.blocksRaycasts = true;
+        canvasGroup.interactable = false;
+        canvasGroup.blocksRaycasts = false;
 
     }
 
